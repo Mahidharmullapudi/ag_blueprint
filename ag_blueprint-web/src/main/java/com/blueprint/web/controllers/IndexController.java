@@ -10,9 +10,11 @@ import org.slf4j.LoggerFactory;
 @RequestMapping("/")
 public class IndexController {
 
+    Logger logger = LoggerFactory.getLogger(IndexController.class);
+    
     @RequestMapping(method = RequestMethod.GET)
     public String indexMethod() {
-        Logger logger = LoggerFactory.getLogger(IndexController.class);
+        
         logger.debug("Inside indexMethod of IndexController");        
         return "index";
     }
