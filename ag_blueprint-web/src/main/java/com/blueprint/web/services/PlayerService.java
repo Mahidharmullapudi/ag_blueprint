@@ -13,9 +13,11 @@ public interface PlayerService {
 
     public Player getPlayerByName(String playerName);
 
-    public void savePlayer(Player player);
+    public Player savePlayer(Player player);
 
-    public void deletePlayer(Player player);
+    public int deletePlayer(int id);
+    
+    public void deletePlayer(String playerName);
 
-    public void updatePlayer(Player player);
+    public Player updatePlayer(int id, Player player);
 }

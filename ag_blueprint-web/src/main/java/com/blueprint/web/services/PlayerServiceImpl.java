@@ -30,18 +30,23 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
-    public void savePlayer(Player player) {
-        
+    public Player savePlayer(Player player) {
+        return playerDao.savePlayer(player);
     }
 
     @Override
-    public void deletePlayer(Player player) {
-        
+    public int deletePlayer(int id) {
+        return playerDao.deletePlayer(id);
+    }
+    
+    @Override
+    public void deletePlayer(String playerName) {
+        playerDao.deletePlayer(playerName);
     }
 
     @Override
-    public void updatePlayer(Player player) {
-        
+    public Player updatePlayer(int id, Player player) {
+        return playerDao.updatePlayer(id, player);
     }
     
 }
