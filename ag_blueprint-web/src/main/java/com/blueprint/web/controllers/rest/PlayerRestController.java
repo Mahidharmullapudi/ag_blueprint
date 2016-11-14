@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PlayerRestController {
 
-    private static final Logger logger = LoggerFactory.getLogger(PlayerRestController.class);
+    private final Logger logger = LoggerFactory.getLogger(PlayerRestController.class);
 
     @Autowired
     private PlayerService playerService;
@@ -67,6 +67,7 @@ public class PlayerRestController {
         if (player == null) {
             return new ResponseEntity("No player updated for the given Id ", HttpStatus.OK);
         }
+        
         return new ResponseEntity(player, HttpStatus.OK);
     }
 

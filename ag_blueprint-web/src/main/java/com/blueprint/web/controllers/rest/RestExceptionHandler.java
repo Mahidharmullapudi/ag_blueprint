@@ -13,10 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RestExceptionHandler {
     
-    private static final Logger logger = LoggerFactory.getLogger(RestExceptionHandler.class);
+    private final Logger logger = LoggerFactory.getLogger(RestExceptionHandler.class);
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> exceptionHandler(Exception ex) {
+        logger.debug("Inside RestExceptionHandler and the exception is: {}" +ex);
         ErrorResponse error = new ErrorResponse();
         error.setErrorCode(HttpStatus.PRECONDITION_FAILED.value());
         error.setMessage(ex.getMessage());

@@ -1,4 +1,3 @@
-
 package com.blueprint.web.services;
 
 import com.blueprint.models.Player;
@@ -11,9 +10,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PlayerServiceImpl implements PlayerService {
-    
-    private Logger logger = LoggerFactory.getLogger(PlayerServiceImpl.class);
-    
+
+    private final Logger logger = LoggerFactory.getLogger(PlayerServiceImpl.class);
+
     @Autowired
     private PlayerDao playerDao;
 
@@ -38,7 +37,7 @@ public class PlayerServiceImpl implements PlayerService {
     public int deletePlayer(int id) {
         return playerDao.deletePlayer(id);
     }
-    
+
     @Override
     public void deletePlayer(String playerName) {
         playerDao.deletePlayer(playerName);
@@ -48,5 +47,5 @@ public class PlayerServiceImpl implements PlayerService {
     public Player updatePlayer(int id, Player player) {
         return playerDao.updatePlayer(id, player);
     }
-    
+
 }
