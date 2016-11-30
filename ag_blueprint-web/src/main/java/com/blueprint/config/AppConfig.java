@@ -5,6 +5,7 @@ import com.blueprint.web.dao.PlayerDaoImpl;
 import com.blueprint.web.services.PlayerService;
 import com.blueprint.web.services.PlayerServiceImpl;
 import org.springframework.context.annotation.*;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
@@ -31,6 +32,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         return bean;
     }
 
+    /*
     @Bean
     public PlayerService playerService() {
         return new PlayerServiceImpl();
@@ -39,6 +41,11 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     @Bean
     public PlayerDao playerDao() {
         return new PlayerDaoImpl();
+    }   */
+    
+    @Bean
+    public RestTemplate template(){
+        return new RestTemplate();
     }
 
 }

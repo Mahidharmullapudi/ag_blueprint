@@ -40,20 +40,14 @@
                 <type>pom</type>
             </dependency>
         </dependencies>
-    </dependencyManagement> 
-    
+    </dependencyManagement>   
+ 
     <dependencies>  
         <!-- Spring libraries -->          
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-        </dependency>       
-            
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>            
-            <type>jar</type>
-        </dependency>
+        </dependency>         
             
         <dependency>
             <groupId>org.springframework</groupId>
@@ -80,12 +74,20 @@
             <type>jar</type>
         </dependency>
         
+        <!-- Web api 
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>6.0</version>
             <scope>provided</scope>
-        </dependency>           
+        </dependency>      -->      
+        <!-- servlet api -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>    
         <!-- Jackson libraries -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -221,6 +223,39 @@
             </plugin>
             
             <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>8.1.16.v20140903</version>
+                <configuration>
+                    <scanIntervalSeconds>10</scanIntervalSeconds>
+                    <stopPort>8085</stopPort>
+                    <stopKey>STOP</stopKey>
+                    <stopWait>10</stopWait>
+                    <contextPath>/</contextPath>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>start-jetty</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>run-exploded</goal>
+                        </goals>
+                        <configuration>
+                            <scanIntervalSeconds>0</scanIntervalSeconds>
+                            <daemon>true</daemon>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>stop-jetty</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>stop</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <version>2.1</version>
@@ -244,7 +279,8 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>            
+            
         </plugins>
     </build>
 

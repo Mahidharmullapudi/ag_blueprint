@@ -14,8 +14,7 @@ public class IndexRestController {
     }
 
     @RequestMapping("api/hello/{player}")
-    public Message message(@PathVariable String player) { //REST endpoint
-        
+    public Message message(@PathVariable String player) { //REST endpoint        
         Message msg = new Message(player, "Hello " +player);
         return msg;
     }
